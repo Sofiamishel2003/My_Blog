@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    height: 100vh;
+}
+
+.current {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 5%;
+}
