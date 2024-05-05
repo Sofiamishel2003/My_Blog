@@ -41,8 +41,8 @@ export const useApi = () => {
     const addPost = async (postData) => {
         setLoading(true);
         try {
-            const { title, sinopsis, gender } = postData; 
-            const responseData = await createPost(title, sinopsis, gender);
+            const { name, description, family, diet, funfact } = postData; 
+            const responseData = await createPost(name, description, family,diet, funfact);
             setData([...data, responseData]);
         } catch (error) {
             setError('Error al crear el post. Por favor, inténtalo de nuevo más tarde.');
@@ -67,8 +67,8 @@ export const useApi = () => {
         setLoading(true);
         try {
             //debugger;
-            const { title, sinopsis, gender } = updatedData;
-            const responseData = await updatePostById(postId, title, sinopsis, gender);
+            const { name, description, family, diet, funfact} = updatedData;
+            const responseData = await updatePostById(postId, name, description, family, diet, funfact);
             setData(data.map(post => (post.id === postId ? responseData : post))); // Actualizar el post en la lista actual
         } catch (error) {
             setError('Error al actualizar el post. Por favor, inténtalo de nuevo más tarde.');

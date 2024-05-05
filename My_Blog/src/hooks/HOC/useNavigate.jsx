@@ -14,7 +14,6 @@ const NavigationProvider = ({ children }) => {
     }, [path])
 
     const navigate = (navigateTo) => {
-        console.log('Navigating to', navigateTo)
         setPage(navigateTo)
     }
 
