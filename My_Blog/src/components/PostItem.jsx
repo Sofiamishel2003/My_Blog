@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import '../styles/Postitem.css'; 
-import PropTypes from 'prop-types';
-import Post from '../data/Post';
 
+// eslint-disable-next-line react/prop-types
 const PostItem = ({ post }) => {
     const getRandomColor = () => {
     const first = Math.floor(Math.random() * 256);
@@ -24,6 +24,7 @@ const PostItem = ({ post }) => {
         backgroundColor: getRandomColor(),
     };
 
+
     return (
         <div className="post-item" style={styles}>
             <h2>{post.name}</h2>
@@ -35,8 +36,5 @@ const PostItem = ({ post }) => {
     );
 };
 
-PostItem.propTypes = {
-    post: PropTypes.instanceOf(Post).isRequired,
-};
 
 export default PostItem;
