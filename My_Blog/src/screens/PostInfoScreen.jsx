@@ -9,7 +9,7 @@ const Postdetail = () => {
     const postId = localStorage.getItem('postId');
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [setError] = useState(null);
+    const [error, setError] = useState(null);
     const { navigate } = useNavigate();
     const { fetchPost, removePost, updatePost } = useApi();
     const [updatedPostData, setUpdatedPostData] = useState({
@@ -27,7 +27,6 @@ const Postdetail = () => {
                 const responseData = await fetchPost(postId);
                 setPost(responseData);
 
-                // Asignar todos los campos correctamente
                 const { name, description, family, diet, funfact } = responseData;
                 if (name && description && family && diet && funfact) {
                     setUpdatedPostData({ name, description, family, diet, funfact });
@@ -91,6 +90,9 @@ const Postdetail = () => {
         return <div>Cargando...</div>;
     }
 
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     if (!post) {
         return <div>No se encontró el post.</div>;

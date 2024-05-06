@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import '../styles/Postitem.css'; 
+import Card from 'react-bootstrap/Card';
 
 // eslint-disable-next-line react/prop-types
 const PostItem = ({ post }) => {
@@ -13,11 +14,10 @@ const PostItem = ({ post }) => {
     };
 
     const styles = {
-        border: '1px solid #ccc',
         borderRadius: '5px',
         padding: '10px',
-        marginBottom: '10px',
-        width: '50%',
+        marginBottom: '30px',
+        width: '80%',
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
@@ -26,13 +26,13 @@ const PostItem = ({ post }) => {
 
 
     return (
-        <div className="post-item" style={styles}>
-            <h2>{post.name}</h2>
-            <p>{post.description}</p>
-            <p>{post.family}</p>
-            <p>{post.diet}</p>
-            <p>{post.funfact}</p>
-        </div>
+       <Card style={styles}>
+            <Card.Body>
+                <Card.Title>{post.name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{post.family}</Card.Subtitle>
+                <Card.Text>{post.description}</Card.Text>
+            </Card.Body>
+        </Card>
     );
 };
 
