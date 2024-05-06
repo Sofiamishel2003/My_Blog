@@ -34,7 +34,6 @@ const Login = () => {
     };
 
     return (
-        <body className="body">
             <div className="login-container">
                 <h2>Iniciar Sesión</h2>
                 {
@@ -63,7 +62,6 @@ const Login = () => {
                 <p className="p">¿Nuevo por aquí?<br/><a href="/?#/register" onClick={() => navigate('/register')} className="linkClasses">Registrarse</a></p>
                 </form>
             </div>
-        </body>
     );
 };
 

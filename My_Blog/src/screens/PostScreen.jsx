@@ -31,7 +31,11 @@ const Posts = () => {
 
     return (
         <section className="posts">
+            <br></br>
+            <br></br>
+            <br></br>
             {posts.map((post) => (
+                
                 <div className='postdiv' key={post.id} onClick={() => handleClick(post.id)}>
                     <PostItem post={post} />
                 </div>

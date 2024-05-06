@@ -4,6 +4,7 @@ import '../../styles/Admin.css'
 import useToken from '../../hooks/useToken'
 import useNavigate from '../HOC/useNavigate'
 import Sidebar from '../../components/SideBar'
+import TopBar from '../../components/TopBar'
 
 import Posts from '../../screens/PostScreen'
 import Form from '../../components/Form'
@@ -59,12 +60,13 @@ const Pages = () => {
     CurrentPage = routes[page].component;
 
     return (
+        <><TopBar />
         <div className='container'>
             <Sidebar />
             <div className='current'>
                 <CurrentPage />
             </div>
-        </div>
+        </div></>
     )
 }
 
