@@ -45,33 +45,32 @@ const MyFormComponent = () => {
     };
 
     return (
-        <div>
-            <h2>Agregar Nuevo Post</h2>
-            {loading && <p>Cargando...</p>}
-            {error && <p>Error: {error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Nombre:</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        <div className="login-container">
+             <div className="row d-flex justify-content-center">
+                    <h3>Crear un nuevo Post</h3>
+                    <div className="card">
+                        <h5 className="text-center mb-4">Ingrese los la nueva información</h5>
+                        {loading && <p>Cargando...</p>}
+                        {error && <p>Error: {error}</p>}
+                        <form className="form-card" onSubmit={handleSubmit}>
+                            <div className="row justify-content-between text-left">
+                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="name" value={formData.name} onChange={handleChange} required  placeholder="Delfin Rosado" /></div>
+                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Familia<span className="text-danger"> *</span></label> <input type="text" name="family" value={formData.family} onChange={handleChange} required placeholder="Delfinea"/></div>
+                            </div>
+                            <div className="row justify-content-between text-left">
+                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="Diet" value={formData.Diet} onChange={handleChange} required  placeholder="peces pequeños como el arenque, el bacalao o la macarela"/></div>
+                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Funfact<span className="text-danger"> *</span></label> <input type="text" name="funfact" value={formData.funfact} onChange={handleChange} required placeholder="Ej: A los delfines les gusta drogarse con peces globo" /></div>
+                            </div>
+                            <div className="row justify-content-between text-left">
+                                <div className="form-group col-12 flex-column d-flex"> <label className="form-control-label px-3">Descripción<span className="text-danger"> *</span></label> <textarea name="description" value={formData.description} onChange={handleChange} required placeholder="" /></div>
+                            </div>
+                            <br></br>
+                            <div className="row justify-content-center">
+                                <div> <button type="submit" className="btn-block btn-primary">Crear Post</button> </div>
+                            </div>
+                        </form>
                 </div>
-                <div>
-                    <label>Descripción:</label>
-                    <textarea name="description" value={formData.description} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Familia:</label>
-                    <input type="text" name="family" value={formData.family} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Dieta:</label>
-                    <input type="text" name="Diet" value={formData.Diet} onChange={handleChange} required />
-                </div>
-                <div>
-                    <label>Funfact:</label>
-                    <input type="text" name="funfact" value={formData.funfact} onChange={handleChange} required />
-                </div>
-                <button type="submit">Agregar Post</button>
-            </form>
+            </div>
         </div>
         
     );
