@@ -99,54 +99,33 @@ const Postdetail = () => {
     }
 
     return (
-        <div className='container'>
-            <div className='post-details'>
-                <h1>{post.name}</h1>
-                <p>{post.description}</p>
-                <p>Familia: {post.family}</p>
-                <p>Dieta: {post.diet}</p>
-                <p>FunFact: {post.funfact}</p>
-                <br></br>
-                <textarea
-                    type="text"
-                    name="name"
-                    placeholder="Nuevo título"
-                    value={updatedPostData.name}
-                    onChange={handleChange}
-                />
-                <textarea
-                    type="text"
-                    name="description"
-                    placeholder="Nueva descripción"
-                    value={updatedPostData.description}
-                    onChange={handleChange}
-                />
-                <textarea
-                    type="text"
-                    name="family"
-                    placeholder="Nueva familia"
-                    value={updatedPostData.family}
-                    onChange={handleChange}
-                />
-                <textarea
-                    type="text"
-                    name="diet"
-                    placeholder="Nueva dieta"
-                    value={updatedPostData.diet}
-                    onChange={handleChange}
-                />
-                <textarea
-                    type="text"
-                    name="funfact"
-                    placeholder="Nuevo Fun Fact"
-                    value={updatedPostData.funfact}
-                    onChange={handleChange}
-                />
-
-                <button onClick={handleDelete}>Eliminar</button>
-                <button onClick={handleUpdate}>Actualizar</button>
+        <><div className="login-container">
+            <div className="row d-flex justify-content-center">
+                <h3>Post</h3>
+                <div className="card">
+                    <h5 className="text-center mb-4">{post.name}</h5>
+                    <form className="form-card">
+                        <div className="row justify-content-between text-left">
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="name" value={updatedPostData.name} onChange={handleChange} required  /></div>
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Familia<span className="text-danger"> *</span></label> <input type="text" name="family" value={updatedPostData.family} onChange={handleChange} required /></div>
+                        </div>
+                        <div className="row justify-content-between text-left">
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="Diet" value={updatedPostData.Diet} onChange={handleChange}/></div>
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Funfact<span className="text-danger"> *</span></label> <input type="text" name="funfact" value={updatedPostData.funfact} onChange={handleChange} required /></div>
+                        </div>
+                        <div className="row justify-content-between text-left">
+                            <div className="form-group col-12 flex-column d-flex"> <label className="form-control-label px-3">Descripción<span className="text-danger"> *</span></label> <textarea name="description" value={updatedPostData.description} onChange={handleChange} required placeholder="" /></div>
+                        </div>
+                        <br></br>
+                        <div className="row justify-content-between text-left">
+                                <div><button className="btn-block btn-primary" onClick={handleDelete}>Eliminar</button> </div>
+                                <div><button className="btn-block btn-primary" onClick={handleUpdate}>Actualizar</button> </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+            </>
     );
 };
 
