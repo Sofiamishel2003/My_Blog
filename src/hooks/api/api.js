@@ -1,4 +1,4 @@
-const API_URL = 'https://cetaceans-blog-8lmo4j8yy-sofia-velasquezs-projects.vercel.app';
+const API_URL = 'https://cetaceans-blog-api.vercel.app';
 import { useAuth } from '../authProvider.jsx'
 
 export const fetchPosts = async () => {
