@@ -1,7 +1,5 @@
-import PropTypes from 'prop-types'
 import '../../styles/Admin.css'
 
-import useToken from '../../hooks/useToken'
 import useNavigate from '../HOC/useNavigate'
 import Sidebar from '../../components/SideBar'
 import TopBar from '../../components/TopBar'
@@ -12,6 +10,7 @@ import info from '../../screens/PostInfoScreen'
 import User from '../../screens/UserScreen'
 import Login from '../../screens/LoginScreen'
 import Register from '../../screens/RegisterScreen'
+import { useAuth } from '../../hooks/authProvider.jsx'
 
 
 const routes = {
@@ -43,12 +42,12 @@ const routes = {
 }
 
 const Pages = () => {
-    const { token } = useToken() 
     const { page, navigate } = useNavigate()
+    const { authToken } = useAuth()
 
     let CurrentPage = () => <h1>404</h1>
     
-    if (routes[page] && routes[page].requiresAuth && !token) {
+    if (routes[page] && routes[page].requiresAuth && !authToken) {
         return <div><h1>Unauthorized</h1><a href='/?#/login' onClick={() => navigate('/login')}>Please login</a></div>
     }
 
@@ -68,12 +67,6 @@ const Pages = () => {
             </div>
         </div></>
     )
-}
-
-
-Pages.propTypes = {
-    token: PropTypes.string,
-    setToken: PropTypes.func
 }
 
 export default Pages

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById, login, register } from './api';
+import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById, Login, register } from './api';
 
 export const useApi = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -38,11 +38,11 @@ export const useApi = () => {
         }
     };
 
-    const addPost = async (postData) => {
+    const addPost = async (author_id,author_name,postData) => {
         setLoading(true);
         try {
-            const { name, description, family, diet, funfact } = postData; 
-            const responseData = await createPost(name, description, family,diet, funfact);
+            const { title, information, family, diet, funfact } = postData; 
+            const responseData = await createPost(title, information,author_id, author_name , family, diet, funfact);
             setData([...data, responseData]);
         } catch (error) {
             setError('Error al crear el post. Por favor, inténtalo de nuevo más tarde.');
@@ -66,9 +66,8 @@ export const useApi = () => {
     const updatePost = async (postId, updatedData) => {
         setLoading(true);
         try {
-            //debugger;
-            const { name, description, family, diet, funfact} = updatedData;
-            const responseData = await updatePostById(postId, name, description, family, diet, funfact);
+            const {  title, information, family, diet, funfact} = updatedData;
+            const responseData = await updatePostById(postId,  title, information, family, diet, funfact);
             setData(data.map(post => (post.id === postId ? responseData : post))); // Actualizar el post en la lista actual
         } catch (error) {
             setError('Error al actualizar el post. Por favor, inténtalo de nuevo más tarde.');
@@ -77,13 +76,10 @@ export const useApi = () => {
         }
     };
 
-    const userLogin = async (usuario, password) => {
-        //debugger;
+    const userLogin = async (username, password) => {
         setLoading(true);
         try {
-            const response = await login(usuario, password);
-            setIsLoggedIn(true);
-            localStorage.setItem('isLoggedIn', JSON.stringify(true));
+            const response = await Login(username, password);
             return response;
         } catch (error) {
             setError('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
@@ -92,12 +88,10 @@ export const useApi = () => {
         }
     };
 
-    const addUser = async (usuario, password) => {
+    const addUser = async (username, password, email) => {
         setLoading(true);
         try {
-            const response = await register(usuario, password);
-            setIsLoggedIn(true);
-            localStorage.setItem('isLoggedIn', JSON.stringify(true));
+            const response = await register(username, password, email);
             return response;
         } catch (error) {
             setError('Error al crear el usuario.');

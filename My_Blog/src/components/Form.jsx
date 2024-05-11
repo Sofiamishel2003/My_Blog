@@ -1,17 +1,19 @@
 import { useApi } from '../hooks/api/useApi';
 import useNavigate from '../hooks/HOC/useNavigate';
+import { useAuth } from '../hooks/authProvider';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import '../styles/Form.css'
 
 const MyFormComponent = () => {
     const { navigate } = useNavigate();
+    const { user } = useAuth()
     const initialState = {
-        name: '',
-        description: '',
+        title: '',
+        information: '',
         family: '',
         diet: '',
-        funfact: ''
+        funfact: '',
 
     };
     const { addPost, loading, error } = useApi(); // Usa el hook useApi para obtener la función addPost
@@ -29,7 +31,7 @@ const MyFormComponent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await addPost(formData); // Envía los datos del formulario usando addPost
+            await addPost( user.id, user.username, formData); // Envía los datos del formulario usando addPost
             setFormData(initialState); 
             Swal.fire({
                 title: '¡Post Agregado!',
@@ -54,15 +56,15 @@ const MyFormComponent = () => {
                         {error && <p>Error: {error}</p>}
                         <form className="form-card" onSubmit={handleSubmit}>
                             <div className="row justify-content-between text-left">
-                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="name" value={formData.name} onChange={handleChange} required  placeholder="Delfin Rosado" /></div>
+                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="name" value={formData.title} onChange={handleChange} required  placeholder="Delfin Rosado" /></div>
                                 <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Familia<span className="text-danger"> *</span></label> <input type="text" name="family" value={formData.family} onChange={handleChange} required placeholder="Delfinea"/></div>
                             </div>
                             <div className="row justify-content-between text-left">
-                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="Diet" value={formData.Diet} onChange={handleChange} required  placeholder="peces pequeños como el arenque, el bacalao o la macarela"/></div>
+                                <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="Diet" value={formData.diet} onChange={handleChange} required  placeholder="peces pequeños como el arenque, el bacalao o la macarela"/></div>
                                 <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Funfact<span className="text-danger"> *</span></label> <input type="text" name="funfact" value={formData.funfact} onChange={handleChange} required placeholder="Ej: A los delfines les gusta drogarse con peces globo" /></div>
                             </div>
                             <div className="row justify-content-between text-left">
-                                <div className="form-group col-12 flex-column d-flex"> <label className="form-control-label px-3">Descripción<span className="text-danger"> *</span></label> <textarea name="description" value={formData.description} onChange={handleChange} required placeholder="" /></div>
+                                <div className="form-group col-12 flex-column d-flex"> <label className="form-control-label px-3">information<span className="text-danger"> *</span></label> <textarea name="description" value={formData.description} onChange={handleChange} required placeholder="" /></div>
                             </div>
                             <br></br>
                             <div className="row justify-content-center">

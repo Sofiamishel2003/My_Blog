@@ -13,8 +13,8 @@ const Postdetail = () => {
     const { navigate } = useNavigate();
     const { fetchPost, removePost, updatePost } = useApi();
     const [updatedPostData, setUpdatedPostData] = useState({
-        name: '',
-        description: '',
+        title: '',
+        information: '',
         family: '',
         diet: '',
         funfact: '',
@@ -27,9 +27,9 @@ const Postdetail = () => {
                 const responseData = await fetchPost(postId);
                 setPost(responseData);
 
-                const { name, description, family, diet, funfact } = responseData;
-                if (name && description && family && diet && funfact) {
-                    setUpdatedPostData({ name, description, family, diet, funfact });
+                const { title, information,family, diet, funfact } = responseData;
+                if (title && information  && family && diet && funfact) {
+                    setUpdatedPostData({ title, information, family, diet, funfact });
                 } else {
                     setError('Datos incompletos del post');
                 }
@@ -103,18 +103,18 @@ const Postdetail = () => {
             <div className="row d-flex justify-content-center">
                 <h3>Post</h3>
                 <div className="card">
-                    <h5 className="text-center mb-4">{post.name}</h5>
+                    <h5 className="text-center mb-4">{post.title}</h5>
                     <form className="form-card">
                         <div className="row justify-content-between text-left">
-                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="name" value={updatedPostData.name} onChange={handleChange} required  /></div>
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="name" value={updatedPostData.title} onChange={handleChange} required  /></div>
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Familia<span className="text-danger"> *</span></label> <input type="text" name="family" value={updatedPostData.family} onChange={handleChange} required /></div>
                         </div>
                         <div className="row justify-content-between text-left">
-                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="Diet" value={updatedPostData.Diet} onChange={handleChange}/></div>
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="Diet" value={updatedPostData.diet} onChange={handleChange}/></div>
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Funfact<span className="text-danger"> *</span></label> <input type="text" name="funfact" value={updatedPostData.funfact} onChange={handleChange} required /></div>
                         </div>
                         <div className="row justify-content-between text-left">
-                            <div className="form-group col-12 flex-column d-flex"> <label className="form-control-label px-3">Descripción<span className="text-danger"> *</span></label> <textarea name="description" value={updatedPostData.description} onChange={handleChange} required placeholder="" /></div>
+                            <div className="form-group col-12 flex-column d-flex"> <label className="form-control-label px-3">Descripción<span className="text-danger"> *</span></label> <textarea name="information" value={updatedPostData.information} onChange={handleChange} required placeholder="" /></div>
                         </div>
                         <br></br>
                         <div className="row justify-content-between text-left">

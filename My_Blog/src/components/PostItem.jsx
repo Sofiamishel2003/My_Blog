@@ -20,9 +20,9 @@ const PostItem = ({ post }) => {
     return (
        <Card style={styles}>
             <Card.Body>
-                <Card.Title>{post.name}</Card.Title>
+                <Card.Title>{post.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted" color='Black'>{post.family}</Card.Subtitle>
-                <Card.Text>{post.description}</Card.Text>
+                <Card.Text>{post.information}</Card.Text>
             </Card.Body>
         </Card>
     );

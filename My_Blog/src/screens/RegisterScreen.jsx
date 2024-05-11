@@ -10,7 +10,7 @@ const Register = () => {
     const { navigate } = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -19,17 +19,8 @@ const Register = () => {
         setIsSubmitting(true);
 
         try {
-            // eslint-disable-next-line no-debugger
-            debugger;
-            if (password !== confirmPassword) {
-                setErrorMessage('Las contraseñas no coinciden.');
-                return;
-            }
-
-            const response = await addUser(username, password);
+            const response = await addUser(username, password,email);
             if (response.ok) {
-                // eslint-disable-next-line no-debugger
-                debugger;
                 Swal.fire({
                     title: '¡Usuario ingresado!',
                     text: 'Ya puedes hacer login en el blog.',
@@ -63,14 +54,16 @@ const Register = () => {
                     </div>
 
                     <div className="flex-column">
-                        <label>Password </label></div>
+                        <label>Emali </label></div>
+                    <div className="inputForm">
+                        <svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path><path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path></svg>
+                        <input type="email" id="email-register" placeholder="Email" value={email} required onChange={(e) => setEmail(e.target.value)} className="input" />
+                    </div>
+                    <div className="flex-column">
+                    <label>Password </label></div>
                     <div className="inputForm">
                         <svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path><path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path></svg>
                         <input type="password" id="password-register" placeholder="Contraseña" value={password} required onChange={(e) => setPassword(e.target.value)} className="input" />
-                    </div>
-                    <div className="inputForm">
-                        <svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path><path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path></svg>
-                        <input type="password" id="confirm-password-register" placeholder="Confirmar contraseña" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)} className="input" />
                     </div>
                     <button className="button-submit" type="submit" disabled={loading || isSubmitting}>Registrarse</button>
                 </form>
