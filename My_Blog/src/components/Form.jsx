@@ -18,6 +18,7 @@ const MyFormComponent = () => {
     };
     const { addPost, loading, error } = useApi(); // Usa el hook useApi para obtener la función addPost
     const [formData, setFormData] = useState(initialState); // Estado para los datos del formulario
+    const authToken = useAuth().authToken
 
     // Función para manejar cambios en los campos del formulario
     const handleChange = (e) => {
@@ -31,7 +32,7 @@ const MyFormComponent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await addPost( user.id, user.username, formData); // Envía los datos del formulario usando addPost
+            await addPost(authToken, user.id, user.username, formData); // Envía los datos del formulario usando addPost
             setFormData(initialState); 
             Swal.fire({
                 title: '¡Post Agregado!',

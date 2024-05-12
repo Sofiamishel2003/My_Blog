@@ -38,11 +38,11 @@ export const useApi = () => {
         }
     };
 
-    const addPost = async (author_id,author_name,postData) => {
+    const addPost = async (authToken,author_id,author_name,postData) => {
         setLoading(true);
         try {
             const { title, information, family, diet, funfact } = postData; 
-            const responseData = await createPost(title, information,author_id, author_name , family, diet, funfact);
+            const responseData = await createPost(authToken,title, information,author_id, author_name , family, diet, funfact);
             setData([...data, responseData]);
         } catch (error) {
             setError('Error al crear el post. Por favor, inténtalo de nuevo más tarde.');
@@ -51,10 +51,10 @@ export const useApi = () => {
         }
     };
 
-    const removePost = async (postId) => {
+    const removePost = async (authToken,postId) => {
         setLoading(true);
         try {
-            await deletePostById(postId);
+            await deletePostById(authToken,postId);
             setData(data.filter(post => post.id !== postId)); // Eliminar el post de la lista actual
         } catch (error) {
             setError('Error al eliminar el post. Por favor, inténtalo de nuevo más tarde.');
@@ -63,11 +63,11 @@ export const useApi = () => {
         }
     };
 
-    const updatePost = async (postId, updatedData) => {
+    const updatePost = async (authToken,postId, updatedData) => {
         setLoading(true);
         try {
             const {  title, information, family, diet, funfact} = updatedData;
-            const responseData = await updatePostById(postId,  title, information, family, diet, funfact);
+            const responseData = await updatePostById(authToken,postId,  title, information, family, diet, funfact);
             setData(data.map(post => (post.id === postId ? responseData : post))); // Actualizar el post en la lista actual
         } catch (error) {
             setError('Error al actualizar el post. Por favor, inténtalo de nuevo más tarde.');
@@ -76,12 +76,13 @@ export const useApi = () => {
         }
     };
 
-    const userLogin = async (username, password) => {
+    const userLogin = async (login,username, password) => {
         setLoading(true);
         try {
-            const response = await Login(username, password);
+            const response = await Login(login,username, password);
             return response;
         } catch (error) {
+            console.log(error)
             setError('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
         } finally {
             setLoading(false);

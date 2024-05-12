@@ -2,6 +2,7 @@ import { useApi } from "../hooks/api/useApi";
 import { useState } from "react";
 import useNavigate from "../hooks/HOC/useNavigate";
 import '../styles/Login.css';
+import { useAuth } from '../hooks/authProvider';
 
 
 const Login = () => {
@@ -11,11 +12,11 @@ const Login = () => {
     const { navigate } = useNavigate();
     const [isSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState('')
+    const { login } = useAuth()
 
-    const handleSubmitLogin = async (data) => {
+    const handleSubmitLogin = async () => {
         try {
-            const { username, password } = data
-            const response = await userLogin(username, password);
+            const response = await userLogin(login,username, password);
     
             if (response.ok) {
                 navigate('/');

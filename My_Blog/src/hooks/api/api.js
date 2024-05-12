@@ -1,5 +1,4 @@
-const API_URL = 'https://the-evangelion-api.vercel.app';
-import { useAuth } from '../authProvider.jsx'
+const API_URL = 'https://cetaceans-blog-api.vercel.app';
 
 export const fetchPosts = async () => {
     const response = await fetch(`${API_URL}/posts`);
@@ -17,9 +16,7 @@ export const fetchPostById = async (id) => {
     return response.json();
 };
 
-export const createPost = async (title, information, author_id, author_name, family, diet, funfact) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const authToken = useAuth().authToken
+export const createPost = async (authToken,title, information, author_id, author_name, family, diet, funfact) => {
     const response = await fetch(`${API_URL}/post`, {
         method: 'POST',
         headers: {
@@ -35,9 +32,7 @@ export const createPost = async (title, information, author_id, author_name, fam
     return response.json();
 };
 
-export const deletePostById = async (id) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const authToken = useAuth().authToken
+export const deletePostById = async (authToken,id) => {
     const response = await fetch(`${API_URL}/post/${id}`, {
         method: 'DELETE',
         headers: {
@@ -50,9 +45,7 @@ export const deletePostById = async (id) => {
     return response.json();
 };
 
-export const updatePostById = async (id, title, information, family, diet, funfact) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const authToken = useAuth().authToken
+export const updatePostById = async (authToken,id, title, information, family, diet, funfact) => {
     const response = await fetch(`${API_URL}/post/${id}`, {
         method: 'PUT',
         headers: {
@@ -68,8 +61,8 @@ export const updatePostById = async (id, title, information, family, diet, funfa
     return response.json();
 };
 
-export const Login = async (username, password) => {
-    const { login } = useAuth()
+export const Login = async (login,username, password) => {
+     console.log("Patatas",login)
     const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
@@ -86,6 +79,7 @@ export const Login = async (username, password) => {
           id: responseData.id,
         })
       } else {
+        console.log(responseData)
         throw new Error('The user or the password is incorrect!');
       }
     return response;

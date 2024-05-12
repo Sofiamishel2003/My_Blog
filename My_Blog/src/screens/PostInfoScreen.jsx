@@ -4,6 +4,8 @@ import { useApi } from '../hooks/api/useApi';
 import useNavigate from '../hooks/HOC/useNavigate';
 import Swal from 'sweetalert2';
 import '../styles/PostInfo.css';
+import { useAuth } from '../hooks/authProvider';
+
 
 const Postdetail = () => {
     const postId = localStorage.getItem('postId');
@@ -11,6 +13,7 @@ const Postdetail = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { navigate } = useNavigate();
+    const authToken = useAuth().authToken
     const { fetchPost, removePost, updatePost } = useApi();
     const [updatedPostData, setUpdatedPostData] = useState({
         title: '',
@@ -56,7 +59,7 @@ const Postdetail = () => {
         // Si el usuario confirma la eliminación
         if (result.isConfirmed) {
             try {
-                await removePost(postId);
+                await removePost(authToken,postId);
                 Swal.fire('Eliminado', 'El post ha sido eliminado correctamente', 'success');
                 navigate('/');
             } catch (error) {
@@ -72,7 +75,7 @@ const Postdetail = () => {
 
     const handleUpdate = async () => {
         try {
-            await updatePost(postId, updatedPostData);
+            await updatePost(authToken,postId, updatedPostData);
             Swal.fire({
                 title: '¡Post Actualizado!',
                 text: 'El post se ha actualizado exitosamente.',
