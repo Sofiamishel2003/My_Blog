@@ -125,8 +125,12 @@ const Postdetail = () => {
                         </div>
                         <br></br>
                         <div className="row justify-content-between text-left">
-                            <div><button type="button" className="btn-block btn-primary" onClick={handleDelete}>Eliminar</button></div>
-                            <div><button type="button" className="btn-block btn-primary" onClick={handleUpdate}>Actualizar</button></div>
+                            <div className="col">
+                                <button type="button" className="btn btn-primary btn-block" onClick={handleDelete}>Eliminar</button>
+                            </div>
+                            <div className="col">
+                                <button type="button" className="btn btn-primary btn-block" onClick={handleUpdate}>Actualizar</button>
+                            </div>
                         </div>
                     </form>
                 </div>
