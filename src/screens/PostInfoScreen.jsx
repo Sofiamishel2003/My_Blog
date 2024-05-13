@@ -64,7 +64,6 @@ const Postdetail = () => {
             try {
                 await removePost(authToken,postId);
                 Swal.fire('Eliminado', 'El post ha sido eliminado correctamente', 'success');
-                navigate('/');
             } catch (error) {
                 setError('Error al eliminar el post. Por favor, inténtalo de nuevo más tarde.');
             }
@@ -109,10 +108,10 @@ const Postdetail = () => {
 
     return (
         <><div className="login-container">
-            <div>
-                <div>
+            <div className="row d-flex justify-content-center">
+                <div className="card">
                     <h5 className="text-center mb-4">{post.title}</h5>
-                    <form >
+                    <form className="form-card">
                         <div className="row justify-content-between text-left">
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="title" value={updatedPostData.title} onChange={handleChange} required  /></div>
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Familia<span className="text-danger"> *</span></label> <input type="text" name="family" value={updatedPostData.family} onChange={handleChange} required /></div>
@@ -126,14 +125,9 @@ const Postdetail = () => {
                         </div>
                         <br></br>
                         <div className="row justify-content-between text-left">
-                            <div className="col">
-                                <button type="button" className="btn btn-primary btn-block" onClick={handleDelete}>Eliminar</button>
-                            </div>
-                            <div className="col">
-                                <button type="button" className="btn btn-primary btn-block" onClick={handleUpdate}>Actualizar</button>
-                            </div>
+                            <div><button type="button" className="btn-block btn-primary" onClick={handleDelete}>Eliminar</button></div>
+                            <div><button type="button" className="btn-block btn-primary" onClick={handleUpdate}>Actualizar</button></div>
                         </div>
-
                     </form>
                 </div>
             </div>

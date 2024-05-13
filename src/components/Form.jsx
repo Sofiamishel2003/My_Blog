@@ -57,8 +57,8 @@ const MyFormComponent = () => {
     }
     return (
         <div className="login-container">
-             <div>
-                    <div>
+             <div className="row d-flex justify-content-center">
+             <div className="card">
                         <h5 className="text-center mb-4">Ingrese los la nueva información</h5>
                         {loading && <p>Cargando...</p>}
                         {error && <p>Error: {error}</p>}
