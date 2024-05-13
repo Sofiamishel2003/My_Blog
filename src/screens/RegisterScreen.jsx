@@ -40,7 +40,6 @@ const Register = () => {
     };
 
     return (
-        <body className="body">
             <div className="login-container">
                 <h2>Registrarse</h2>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -69,7 +68,6 @@ const Register = () => {
                 </form>
                 {loading && <LoadingScreen />}
                 </div>
-        </body>
     );
 };
 
