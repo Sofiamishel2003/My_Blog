@@ -2,6 +2,7 @@ const API_URL = 'https://cetaceans-blog-api.vercel.app';
 
 export const fetchPosts = async () => {
     const response = await fetch(`${API_URL}/posts`);
+    console.log("respuesta",response)
     if (!response.ok) {
         throw new Error('Error al obtener los datos del API');
     }
