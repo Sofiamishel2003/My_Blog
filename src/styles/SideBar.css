@@ -44,9 +44,18 @@ a:focus {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
+
 .wrapper {
+    height: 100%;
     display: flex;
-    width: 100%;
+    position: fixed;
+    width: 20%;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+    border: none;
+    margin-top: 5%;
     align-items: stretch;
 
 }

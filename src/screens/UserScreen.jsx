@@ -1,10 +1,14 @@
 import '../styles/User.css'; 
 import useNavigate from '../hooks/HOC/useNavigate';
 import Swal from 'sweetalert2';
+import { useAuth } from '../hooks/authProvider';
+
 
 const User = () => {
     const { navigate } = useNavigate();
-  
+    const { user } = useAuth()
+
+    console.log(user)
     const handleLogout = () => {
       localStorage.clear(); 
       Swal.fire({
@@ -19,13 +23,41 @@ const User = () => {
   };
   
     return (
-      <div className="user-container">
-        <div className="user-details">
-          <h2 className="user-name">John Doe</h2>
-          <button onClick={handleLogout}>Logout</button>
+      <div className="contenedor">
+
+      <div id="overlay">
+        <div className="image">
+          <div className="trick">
+  
+          </div>
+        </div>
+        <ul className="text">{user.username}</ul>
+      <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div className="panel panel-default">
+          <div className="panel-heading " role="tab" id="headingOne">
+            <h4 className="panel-title ">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="" aria-controls="collapseOne">
+                <div className="title  btn btn-danger btn-outline btn-lg">{user.role}</div>
+              </a>
+            </h4>
+          </div>
+        </div>
+
+        <div className="panel panel-default">
+          <div className="panel-heading" role="tab" id="headingThree">
+            <h4 className="panel-title">
+              <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <div onClick={handleLogout} className="title btn btn-danger btn-outline btn-lg">LogOut</div>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          </div>
         </div>
       </div>
-    );
-  };
+            </div>
+          </div>
+        );
+      };
 
 export default User;

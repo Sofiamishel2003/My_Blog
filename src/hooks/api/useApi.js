@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
-import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById, Login, register } from './api';
+import { fetchPosts, fetchPostById, createPost, deletePostById, updatePostById, Login, register, fetchUserById} from './api';
 
 export const useApi = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        const storedLoggedIn = localStorage.getItem('isLoggedIn');
-        return storedLoggedIn ? JSON.parse(storedLoggedIn) : false;
-    });
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -15,7 +11,7 @@ export const useApi = () => {
             setLoading(true);
             try {
                 const responseData = await fetchPosts();
-                setData(responseData);
+                setData(responseData.data);
             } catch (error) {
                 setError('Error de comunicación con el API. Por favor, inténtalo de nuevo más tarde.');
             } finally {
@@ -30,6 +26,17 @@ export const useApi = () => {
         setLoading(true);
         try {
             const responseData = await fetchPostById(postId);
+            return responseData.data;
+        } catch (error) {
+            setError('Error al obtener el post. Por favor, inténtalo de nuevo más tarde.');
+        } finally {
+            setLoading(false);
+        }
+    };
+    const fetchUser = async (Id) => {
+        setLoading(true);
+        try {
+            const responseData = await fetchUserById(Id);
             return responseData;
         } catch (error) {
             setError('Error al obtener el post. Por favor, inténtalo de nuevo más tarde.');
@@ -43,7 +50,7 @@ export const useApi = () => {
         try {
             const { title, information, family, diet, funfact } = postData; 
             const responseData = await createPost(authToken,title, information,author_id, author_name , family, diet, funfact);
-            setData([...data, responseData]);
+            setData([...data, responseData.data]);
         } catch (error) {
             setError('Error al crear el post. Por favor, inténtalo de nuevo más tarde.');
         } finally {
@@ -101,5 +108,5 @@ export const useApi = () => {
         }
     };
 
-    return { data, loading, error, fetchPost, addPost, removePost, updatePost, userLogin, addUser, isLoggedIn, setIsLoggedIn };
+    return { data, loading, error, fetchPost, addPost, removePost, updatePost, userLogin, addUser,fetchUser };
 };

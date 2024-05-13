@@ -9,6 +9,7 @@ import { useAuth } from '../hooks/authProvider';
 
 const Postdetail = () => {
     const postId = localStorage.getItem('postId');
+    console.log("PostId: ",postId)
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -28,6 +29,7 @@ const Postdetail = () => {
             setLoading(true);
             try {
                 const responseData = await fetchPost(postId);
+                console.log(responseData)
                 setPost(responseData);
 
                 const { title, information,family, diet, funfact } = responseData;
@@ -109,11 +111,11 @@ const Postdetail = () => {
                     <h5 className="text-center mb-4">{post.title}</h5>
                     <form className="form-card">
                         <div className="row justify-content-between text-left">
-                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="name" value={updatedPostData.title} onChange={handleChange} required  /></div>
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="title" value={updatedPostData.title} onChange={handleChange} required  /></div>
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Familia<span className="text-danger"> *</span></label> <input type="text" name="family" value={updatedPostData.family} onChange={handleChange} required /></div>
                         </div>
                         <div className="row justify-content-between text-left">
-                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="Diet" value={updatedPostData.diet} onChange={handleChange}/></div>
+                            <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Dieta<span className="text-danger"> *</span></label> <input type="text" name="diet" value={updatedPostData.diet} onChange={handleChange}/></div>
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Funfact<span className="text-danger"> *</span></label> <input type="text" name="funfact" value={updatedPostData.funfact} onChange={handleChange} required /></div>
                         </div>
                         <div className="row justify-content-between text-left">
@@ -121,8 +123,8 @@ const Postdetail = () => {
                         </div>
                         <br></br>
                         <div className="row justify-content-between text-left">
-                                <div><button className="btn-block btn-primary" onClick={handleDelete}>Eliminar</button> </div>
-                                <div><button className="btn-block btn-primary" onClick={handleUpdate}>Actualizar</button> </div>
+                            <div><button type="button" className="btn-block btn-primary" onClick={handleDelete}>Eliminar</button></div>
+                            <div><button type="button" className="btn-block btn-primary" onClick={handleUpdate}>Actualizar</button></div>
                         </div>
                     </form>
                 </div>

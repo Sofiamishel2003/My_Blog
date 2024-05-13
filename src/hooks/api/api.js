@@ -2,7 +2,6 @@ const API_URL = 'https://cetaceans-blog-api.vercel.app';
 
 export const fetchPosts = async () => {
     const response = await fetch(`${API_URL}/posts`);
-    console.log("respuesta",response)
     if (!response.ok) {
         throw new Error('Error al obtener los datos del API');
     }
@@ -13,6 +12,13 @@ export const fetchPostById = async (id) => {
     const response = await fetch(`${API_URL}/post/${id}`);
     if (!response.ok) {
         throw new Error('Error al obtener el post del API');
+    }
+    return response.json();
+};
+export const fetchUserById = async (id) => {
+    const response = await fetch(`${API_URL}/user/${id}`);
+    if (!response.ok) {
+        throw new Error('Error al obtener el usuario del API');
     }
     return response.json();
 };
@@ -64,6 +70,7 @@ export const updatePostById = async (authToken,id, title, information, family, d
 
 export const Login = async (login,username, password) => {
      console.log("Patatas",login)
+     
     const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
@@ -80,7 +87,6 @@ export const Login = async (login,username, password) => {
           id: responseData.id,
         })
       } else {
-        console.log(responseData)
         throw new Error('The user or the password is incorrect!');
       }
     return response;
