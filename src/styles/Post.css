@@ -1,0 +1,4 @@
+.posts {
+    padding-top: 20%; /* Esto reserva el 20% del alto de la ventana al principio de la sección */
+    overflow: auto;    /* Asegura que todo el contenido sea scrollable si es necesario */
+}

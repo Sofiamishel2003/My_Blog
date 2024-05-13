@@ -1,10 +1,14 @@
 import '../styles/Loading.css'; 
 
+
 const LoadingScreen = () => {
     return (
-        <div className="loading-screen">
-            <div className="loader"></div>
+        <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
         </div>
+
     );
 };
 

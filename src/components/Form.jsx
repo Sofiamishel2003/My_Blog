@@ -4,6 +4,8 @@ import { useAuth } from '../hooks/authProvider';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import '../styles/Form.css'
+import LoadingScreen from '../screens/LoadingScreen';
+
 
 const MyFormComponent = () => {
     const { navigate } = useNavigate();
@@ -46,12 +48,17 @@ const MyFormComponent = () => {
             console.error('Error al crear el post:', error);
         }
     };
-
+    if (loading) {
+        return (
+            <div className="loading-screen">
+                <LoadingScreen />
+            </div>
+        );
+    }
     return (
         <div className="login-container">
-             <div className="row d-flex justify-content-center">
-                    <h3>Crear un nuevo Post</h3>
-                    <div className="card">
+             <div>
+                    <div>
                         <h5 className="text-center mb-4">Ingrese los la nueva información</h5>
                         {loading && <p>Cargando...</p>}
                         {error && <p>Error: {error}</p>}

@@ -36,7 +36,7 @@ const User = () => {
         <div className="panel panel-default">
           <div className="panel-heading " role="tab" id="headingOne">
             <h4 className="panel-title ">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="" aria-controls="collapseOne">
+              <a role="button"  aria-expanded="" >
                 <div className="title  btn btn-danger btn-outline btn-lg">{user.role}</div>
               </a>
             </h4>
@@ -46,7 +46,7 @@ const User = () => {
         <div className="panel panel-default">
           <div className="panel-heading" role="tab" id="headingThree">
             <h4 className="panel-title">
-              <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <a  role="button"  aria-expanded="false" >
                 <div onClick={handleLogout} className="title btn btn-danger btn-outline btn-lg">LogOut</div>
               </a>
             </h4>

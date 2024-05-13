@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import { useApi } from '../hooks/api/useApi';
 import useNavigate from '../hooks/HOC/useNavigate';
 import Swal from 'sweetalert2';
-import '../styles/PostInfo.css';
+import '../styles/Login.css';
 import { useAuth } from '../hooks/authProvider';
+import LoadingScreen from './LoadingScreen';
 
 
 const Postdetail = () => {
@@ -92,8 +93,11 @@ const Postdetail = () => {
     };
 
     if (loading) {
-        return <div>Cargando...</div>;
-    }
+        return (
+            <div className="loading-screen">
+                <LoadingScreen />
+            </div>
+        );    }
 
     if (error) {
         return <div>Error: {error}</div>;
@@ -105,11 +109,10 @@ const Postdetail = () => {
 
     return (
         <><div className="login-container">
-            <div className="row d-flex justify-content-center">
-                <h3>Post</h3>
-                <div className="card">
+            <div>
+                <div>
                     <h5 className="text-center mb-4">{post.title}</h5>
-                    <form className="form-card">
+                    <form >
                         <div className="row justify-content-between text-left">
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Nombre<span className="text-danger"> *</span></label> <input type="text" name="title" value={updatedPostData.title} onChange={handleChange} required  /></div>
                             <div className="form-group col-sm-6 flex-column d-flex"> <label className="form-control-label px-3">Familia<span className="text-danger"> *</span></label> <input type="text" name="family" value={updatedPostData.family} onChange={handleChange} required /></div>
@@ -123,9 +126,14 @@ const Postdetail = () => {
                         </div>
                         <br></br>
                         <div className="row justify-content-between text-left">
-                            <div><button type="button" className="btn-block btn-primary" onClick={handleDelete}>Eliminar</button></div>
-                            <div><button type="button" className="btn-block btn-primary" onClick={handleUpdate}>Actualizar</button></div>
+                            <div className="col">
+                                <button type="button" className="btn btn-primary btn-block" onClick={handleDelete}>Eliminar</button>
+                            </div>
+                            <div className="col">
+                                <button type="button" className="btn btn-primary btn-block" onClick={handleUpdate}>Actualizar</button>
+                            </div>
                         </div>
+
                     </form>
                 </div>
             </div>

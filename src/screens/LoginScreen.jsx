@@ -1,5 +1,6 @@
 import { useApi } from "../hooks/api/useApi";
 import { useState } from "react";
+import LoadingScreen from './LoadingScreen';
 import useNavigate from "../hooks/HOC/useNavigate";
 import '../styles/Login.css';
 import { useAuth } from '../hooks/authProvider';
@@ -27,7 +28,13 @@ const Login = () => {
             setErrorMessage('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
         }
     };
-
+    if (loading) {
+        return (
+            <div className="loading-screen">
+                <LoadingScreen />
+            </div>
+        );
+    }
     return (
             <div className="login-container">
                 <h2>Iniciar Sesión</h2>
@@ -38,7 +45,7 @@ const Login = () => {
                         </div>
                     ) : null
                 }
-                <form onSubmit={handleSubmitLogin} className="form">
+                <form onSubmit={handleSubmitLogin} >
                 <div className="flex-column">
                     <label>User </label></div>
                     <div className="inputForm">

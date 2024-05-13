@@ -1,31 +1,40 @@
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
 .contenedor {
-    position: fixed;  /* Cambiado de 'absolute' a 'fixed' para centrar respecto a la ventana del navegador */
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;  /* Ajusta esto según la anchura que desees */
-    max-width: 90%;  /* Asegúrate de que no sea demasiado ancho en pantallas más pequeñas */
-    height: auto;  /* Altura automática según el contenido */
-    padding: 20px;  
+    width: 40%;  /* Flexible width */
+    height: auto;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(29, 65, 183, 0.249);
     background-color: #ffffff;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-group {
+    width: 100%;  /* Make panel group responsive */
+    padding: 10px;
+}
+
+.title, .btn-outline {
+    width: 90%;  /* Buttons take full width of their container */
+    text-align: center;
+    padding: 10px;
 }
 
 .image {
-    text-align: center;
-    width: 200px;
-    height: 200px;
+    width: 50vw; /* Adjust based on viewport width */
+    height: 50vw; /* Keep aspect ratio 1:1 */
+    max-width: 200px; /* Maximum size */
+    max-height: 200px; /* Maximum size */
     border-radius: 50%;
-    box-shadow: 0 0 0 1px #eee;
     background: url("https://cdn-icons-png.freepik.com/256/11702/11702590.png?semt=ais_hybrid") center center no-repeat;
+    box-shadow: 0 0 0 1px #eee;
     background-size: cover;
     margin: auto;
     margin-top: 20px;
@@ -35,46 +44,45 @@
 .text {
     font-family: 'Poppins', sans-serif;
     font-size: 40px;
+    width: 90%;  /* Ensure text alignment and sizing within container */
     text-align: center;
     color: #000;
     margin-top: 43px;
 }
-
 .text1 {
+    width: 70%;  /* Ensure text alignment and sizing within container */
     font-family: 'Poppins', sans-serif;
     font-size: 21px;
     text-align: center;
-    margin-top: -20px;
-    color: #000;
-}
-
-.panel-group {
-    width: 350px;
-    margin: auto;
-}
-
-.title {
     text-align: center;
     color: #000;
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-}
 
-.btn-outline {
-    color: inherit;
-    transition: all 1.4s;
-    background-color: transparent;
 }
 
 .btn-danger.btn-outline {
     margin-top: 9px;
     background-color: transparent;
-    color: #000;
     border-color: #000;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
+    color: #000;
+
+}
+.btn-danger.btn-outline:hover {
+    background-color: #2673d2; /* Bootstrap primary blue */
+    color: #ffffff; /* White text color on hover */
+}
+
+@media (max-width: 768px) {
+    .contenedor {
+        width: 60%; /* Increase width on smaller screens */
+    }
+    .image {
+        width: 40vw;
+        height: 40vw;
+    }
+    .text {
+        font-size: 5vw; /* Adjust font size based on viewport width */
+    }
+    .text1 {
+        font-size: 4vw;
+    }
 }

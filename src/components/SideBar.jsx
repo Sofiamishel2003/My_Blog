@@ -8,7 +8,7 @@ const Sidebar = () => {
         <><div className="wrapper">
             <nav id="sidebar">
                 <div className="sidebar-header">
-                    <h3>Blog Cetaceos</h3>
+                    <h3> </h3>
                 </div>
                     <><ul className="list-unstyled components">
                         <li>
