@@ -1,4 +1,3 @@
-import '../styles/Loading.css'; 
 
 
 const LoadingScreen = () => {
