@@ -1,7 +1,6 @@
 
 ### README.md for Cetacean Blog
 
-```markdown
 # Welcome to My Cetacean Blog 🐋✨
 ![Cetacean Blog Banner](https://yourlink.com/banner.jpg)
 
@@ -51,11 +50,20 @@ Embark on a journey through the vast oceans to explore the lives of cetaceans. E
 ![image](https://github.com/Sofiamishel2003/My_Blog/assets/98661058/23a3bd04-1433-4db8-b99a-eeb453ab5d3a)
 
 ```
+### Explanation
+- **First Image**: Login Page to enter the blog, if you don´t have an account yet, click on the register link.
+- **Blog Posts**: Blog posts display.
+- **Edit a Posit**: List all the atributes of the post and the option to edit and delete.
+- **User**: User Page, with the name of the user, the role and the logout button.
+```
 
-## POINTS 
-- **Banner and Images**: Replace placeholder links with actual URLs to images related to your blog. These should be engaging and relevant to cetaceans.
-- **Getting Started**: Adjust the commands and links according to your actual GitHub repository and local development settings.
-- **Technologies**: List all the technologies used in your project, explaining briefly how each contributes to the blog.
-- **Collaborations**: Encourage community engagement by inviting contributions and feedback.
-- **Enjoy the Blog**: A closing section that invites readers to dive deeper into the content, enhancing their understanding and appreciation of cetaceans.
+## Requisitos Cumplidos
 
+- **Código compatible con eslint javascript/standard (20 puntos)**: Se implemento correctamente, desde la api, hasta el blog y no tiene ningún error.
+- **React Suspense para el lazy loading (20 puntos)**: implementado correctamente en el manejo de `LoadingScreen`
+- **Router (10 puntos)**: implementado correctamente, en la carpeta de hooks adentro se encuentra el `HOC` y ahí dentro está el Admin y el Router creado.
+- **Api Hook (10 puntos)**: Se implementó correctamente en la carpeta de `src/Hooks` se encuentra el `useApi`
+- **Local token (10 puntos)**: Se implemento con la firma de `jwt` con su secret en el .env, en el login se hace la firma y se guarda en su hook the useAuth, este token dura 24 h. 
+- **Token de auticación en TODAS las request:(15 puntos)**: Se elabró correctamente, se puede ver en el hook del api las llamadas facilmente.
+- **UseForm  hook (10 puntos)**:Se implementó correctamente en la carpeta de `src/Hooks` se encuentra el `useForm`
+**Puntuación Total**: 95/95 + Subjetivo( 50 puntos)
