@@ -66,4 +66,4 @@ Embark on a journey through the vast oceans to explore the lives of cetaceans. E
 - **Local token (10 puntos)**: Se implemento con la firma de `jwt` con su secret en el .env, en el login se hace la firma y se guarda en su hook the useAuth, este token dura 24 h. 
 - **Token de auticación en TODAS las request:(15 puntos)**: Se elabró correctamente, se puede ver en el hook del api las llamadas facilmente.
 - **UseForm  hook (10 puntos)**:Se implementó correctamente en la carpeta de `src/Hooks` se encuentra el `useForm`
-**Puntuación Total**: 95/95 + Subjetivo( 50 puntos)
+### Puntuación Total**: 95/95 + Subjetivo( 50 puntos)
