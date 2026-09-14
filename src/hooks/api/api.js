@@ -1,5 +1,5 @@
 const API_URL = 'https://cetaceans-blog-api.vercel.app';
-
+//const API_URL = 'http://127.0.0.1:3000';
 export const fetchPosts = async () => {
     const response = await fetch(`${API_URL}/posts`);
     if (!response.ok) {
